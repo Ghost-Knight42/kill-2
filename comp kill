@@ -1,0 +1,27 @@
+"""
+Flash Drive Detection & System Freeze
+This script simulates a malicious program that detects a flash drive insertion and 
+freezes the system for 5 seconds before attempting to restart it.
+"""
+
+import time
+
+def flash_drive_detect():
+    """
+    Simulate detecting a hot flash drive.
+    Wait 5 seconds to mimic the "burning" scenario.
+    """
+    time.sleep(5)  # Sleep for 5 seconds
+
+    """
+    Attempt to read an empty file.
+    This should raise an IO error since we're trying to read from /dev/null.
+    """
+    try:
+        # Open a null file and attempt to read it
+        with open('/dev/null', 'rb'):
+            _ = open().read()  # This line will fail!
+            
+    except IOError as e:
+        """
+        Freeze the system
